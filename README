@@ -1,0 +1,2 @@
+First, get raw data from yahoo, run:
+python get_rawdata.py
