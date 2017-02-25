@@ -1,2 +1,13 @@
-First, get raw data from yahoo, run:
-python get_rawdata.py
+1. get raw data from yahoo, run:
+  python get_raw_data.py
+
+This will download raw data and generate many .csv file. cost some times, only need to run it once.
+2. calc MACD, run:
+  python calc_data.py
+  
+This will calc MACD and generate many .csv file. run it once if you don't change the algo of MACD.
+
+3. stock filter
+  python macd3.py
+  
+apply filter on data. output a result.txt with stocks.
