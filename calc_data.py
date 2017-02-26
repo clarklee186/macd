@@ -29,5 +29,7 @@ for n in names:
 		continue
 	px['26 ema'] = pd.ewma(px["Adj Close"], span=26)
 	px['12 ema'] = pd.ewma(px["Adj Close"], span=12)
-	px['MACD'] = (px['12 ema'] - px['26 ema'])
+	px['MACD_value'] = (px['12 ema'] - px['26 ema'])
+	px['Signal Line'] = pd.ewma(px['MACD_value'], span=9)
+	px['MACD'] = (px['MACD_value'] - px['Signal Line']) * 2
 	px.to_csv(n + ".csv")
