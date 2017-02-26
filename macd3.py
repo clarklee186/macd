@@ -9,8 +9,10 @@ def get_px(stock, start, end):
      return web.get_data_yahoo(stock, start, end)
 
 current_low = 4
-recent_up = 1
+recent_up = 4
 recent_low = 1
+
+low_price_line = 2.5
 
 start = dt.datetime(2016,1,2)
 
@@ -34,6 +36,10 @@ for n in names:
 	except Exception:
 		print "error 1: get data fail"
 		continue
+		
+	if pd.to_numeric(px['Low'].iloc[-1]) < low_price_line:
+		continue
+		
 #	print px
 	if pd.to_numeric(px['MACD'].iloc[-1]) > 0:
 #		print pd.to_numeric(px['MACD'].iloc[i] )  
