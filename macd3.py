@@ -1,4 +1,4 @@
-#!/usr/bin/env python                                                                                                                                    
+#!/usr/bin/env python                                  
 #import pandas.io.data as web
 import pandas as pd
 import pandas_datareader.data as web
@@ -35,7 +35,7 @@ for n in names:
 		print "error 1: get data fail"
 		continue
 #	print px
-	if px['MACD'].iloc[-1] > 0:
+	if pd.to_numeric(px['MACD'].iloc[-1]) > 0:
 #		print pd.to_numeric(px['MACD'].iloc[i] )  
 		continue
 #	print pd.to_numeric(px['MACD'].iloc[-1] ) 
