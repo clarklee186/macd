@@ -8,9 +8,9 @@ import datetime as dt
 def get_px(stock, start, end): 
      return web.get_data_yahoo(stock, start, end)
 
-current_low = 6
-recent_up = 16
-recent_low = 21
+current_low = 4
+recent_up = 1
+recent_low = 1
 
 start = dt.datetime(2016,1,2)
 
