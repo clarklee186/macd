@@ -22,12 +22,13 @@ end= dt.date.today()
 infile = open("list.csv", "r")
 
 names = infile.read().split("\n")
-#print names
 while '' in names:
     names.remove('')
 print names
 
 outfile = open("result.txt", "w")
+
+dict1 = {}
 
 for n in names:
 	print "begin analyze: ", n
@@ -109,12 +110,16 @@ for n in names:
 	if pd.to_numeric(c['Low'].ix[ci]) > pd.to_numeric(a['Low'].ix[ai]):
 		if pd.to_numeric(c['MACD'].min()) < pd.to_numeric(a['MACD'].min()):
 			if pd.to_numeric(c['MACD'].mean()) < pd.to_numeric(a['MACD'].mean()):
-				print n
-				outfile.write(n)
-				outfile.write("\n")
+				print n, " is what we want."
+				dict1.update({ n: (pd.to_numeric(a['MACD'].min()) - pd.to_numeric(c['MACD'].min()) )} )
+				
 #		else:
 #			print n," is not what we want."
 #	else:
 #		print n," is not what we want."
 
+#print dict1
+dict2 = sorted(dict1.items(), key=lambda d: d[1], reverse=True)
+outfile.write(str(dict2)) 
+print(str(dict2))
 outfile.close()
