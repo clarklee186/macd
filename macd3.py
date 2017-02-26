@@ -83,6 +83,7 @@ for n in names:
 			print "error 2: out of bound fail"
 			break
 		i = i - 1
+		
 	j = i+1
 	c=px.iloc[j:k]
 #	print j
@@ -100,7 +101,7 @@ for n in names:
 #	print c.ix[ci]
 
 	if pd.to_numeric(c['Low'].ix[ci]) > pd.to_numeric(a['Low'].ix[ai]):
-		if pd.to_numeric(c['MACD'].ix[ci]) < pd.to_numeric(a['MACD'].ix[ai]):
+		if pd.to_numeric(c['MACD'].min()) < pd.to_numeric(a['MACD'].min()):
 			if pd.to_numeric(c['MACD'].mean()) < pd.to_numeric(a['MACD'].mean()):
 				print n
 				outfile.write(n)
