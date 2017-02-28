@@ -42,11 +42,15 @@ for n in names:
 		continue
 		
 #	print px
-	if pd.to_numeric(px['MACD'].iloc[-1]) > 0:
+	if pd.to_numeric(px['MACD'].iloc[-1]) < 0:
 #		print pd.to_numeric(px['MACD'].iloc[i] )  
 		continue
 #	print pd.to_numeric(px['MACD'].iloc[-1] ) 
 
+	if pd.to_numeric(px['MACD'].iloc[-2]) > 0:
+#		print pd.to_numeric(px['MACD'].iloc[i] )  
+		continue
+		
 	i = -2 
 	try:
 		while pd.to_numeric(px['MACD'].iloc[i] )  <= 0.0 : 
@@ -55,7 +59,7 @@ for n in names:
 		print "error 2: out of bound fail"
 		continue
 	j = i
-	a=px.iloc[j+1:-1]
+	a=px.iloc[j+1:-2]
 #	print j
 #	print a
 	try:
@@ -70,7 +74,7 @@ for n in names:
 #	if ai != len(px.index)-1:
 #		continue
 	
-	if len(a.index) <current_low:
+	if len(a.index) < current_low:
 		continue
 		
 	while True: 
@@ -111,7 +115,7 @@ for n in names:
 		if pd.to_numeric(c['MACD'].min()) < pd.to_numeric(a['MACD'].min()):
 			if pd.to_numeric(c['MACD'].mean()) < pd.to_numeric(a['MACD'].mean()):
 				print n, " is what we want."
-				dict1.update({ n: (pd.to_numeric(a['MACD'].min()) - pd.to_numeric(c['MACD'].min()) )} )
+				dict1.update({ n: ( pd.to_numeric(px['MACD'].iloc[-1]) )} )
 				
 #		else:
 #			print n," is not what we want."
