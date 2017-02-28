@@ -104,8 +104,8 @@ for n in names:
 	except Exception:
 		print "error 3: get min fail"
 		continue
-       
-	if len(c.index) < recent_low:
+       		
+	if len(c.index) < len(a.index):
 		continue
 		
 #	print "former lowest price day:", ci
